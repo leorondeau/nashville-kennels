@@ -13,7 +13,7 @@ export const LocationList = () => {
     */
 
     useEffect(() => {
-        console.log("LocationList: Initial render before data")
+        // console.log("LocationList: Initial render before data")
         getLocations()
     }, [])
 
@@ -22,8 +22,8 @@ export const LocationList = () => {
         it is responding to is that the location state changed.
     */
     useEffect(() => {
-        console.log("LocationList: Location state changed")
-        console.log("loctions" , locations)
+        // console.log("LocationList: Location state changed")
+        // console.log("loctions" , locations)
 
     }, [locations])
 
