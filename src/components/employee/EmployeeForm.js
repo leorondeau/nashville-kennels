@@ -44,15 +44,17 @@ export const EmployeeForm = (props) => {
        
         const locationId = parseInt(location.current.value)
         const animalId = parseInt(animal.current.value)
+        const name = name.current.value
 
-        if (locationId === 0) {
-            window.alert("Please select a location") }
+        if (locationId === 0 || animalId === 0 || name === "") {
+            window.alert("Please select a location and an animal and provide a name") }
             else {
                 addEmployee({
                     name: name.current.value,
                     locationId,
                     animalId
                 })
+                // This renders back to /employees after form is sent
                 .then(() => props.history.push("/employees")) 
             }
         }
