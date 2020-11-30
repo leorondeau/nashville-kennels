@@ -14,7 +14,7 @@ export const ApplicationViews = (props) => {
     return (
         <>
             {/* Exact needed or it will also match the other routes because
-      they all have "/ in the path" */}
+      they all have "/"" in the path */}
             <LocationProvider>
                 <Route exact path="/">
                     <LocationList />
