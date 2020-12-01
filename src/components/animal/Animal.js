@@ -1,5 +1,4 @@
 import React from "react"
-import { Customer } from "../customer/Customer"
 import "./Animal.css"
 
 export const Animal = ({ animal , location , customer }) => (
