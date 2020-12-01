@@ -11,11 +11,12 @@ export const EmployeeDetail = (props) => {
 
     const [animal , setAnimal] = useState({})
     const [employee , setEmployee] = useState({})
+    const [location , setLocation] = useState({})
 
     useEffect(() => {
         getEmployees()
-        .then(getAnimals)
         .then(getLocations)
+        .then(getAnimals)
     } , [])
 
     useEffect(() => {
