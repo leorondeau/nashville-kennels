@@ -11,6 +11,8 @@ import { EmployeeForm } from "./employee/EmployeeForm"
 import { AnimalForm } from "./animal/AnimalForm"
 import { EmployeeDetail } from "./employee/EmployeeDetail"
 import { EmployeeList } from "./employee/EmployeeList"
+import { LocationDetail } from "./location/LocationDetail"
+
 
 
 export const ApplicationViews = (props) => {
@@ -19,9 +21,17 @@ export const ApplicationViews = (props) => {
             {/* Exact needed or it will also match the other routes because
       they all have "/"" in the path */}
             <LocationProvider>
-                <Route exact path="/">
-                    <LocationList />
-                </Route>
+                <EmployeeProvider>
+                    <AnimalProvider>
+                        <Route exact path="/">
+                            <LocationList />
+                        </Route>
+
+                        <Route path="/locations/:locationId(\d+)" render={
+                            props => <LocationDetail {...props} />
+                        } />
+                    </AnimalProvider>
+                </EmployeeProvider>
             </LocationProvider>
             {/* Link and Route are complimentary to each other.
       If a Link is added it must have a corresponding route */}
