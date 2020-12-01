@@ -4,6 +4,7 @@ import "./Location.css"
 export const LocationDetail = (props) => {
     return (
         <section className="location">
+            {/* This props.location has to be location because it's the property of props, not a Taco */}
             <h2 className="location__name">{props.location.state.chosenLocation.name}</h2>
             <address className="location__address">{props.location.state.chosenLocation.address}</address>
             <div>

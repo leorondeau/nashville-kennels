@@ -28,6 +28,7 @@ export const LocationList = () => {
         <div className="locations">
             {
                 locations.map(location => {
+                    // Adding new key value pairs to the location object.
                     location.employees = employees.filter(e => e.locationId === location.id)
                     location.animals = animals.filter(a => a.locationId === location.id)
 
