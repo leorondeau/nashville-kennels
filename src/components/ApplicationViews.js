@@ -66,9 +66,9 @@ export const ApplicationViews = (props) => {
                         <Route path="/employees/create" render={
                             props => <EmployeeForm {...props} />
                         } />
-
+                        
                         <Route path="/employees/:employeeId(\d+)" render={
-
+                            // Props (location , match , history) are being attachec to EmployeeDetail
                             props => <EmployeeDetail {...props} />
                         } />
 

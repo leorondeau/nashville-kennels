@@ -9,10 +9,15 @@ export const EmployeeDetail = (props) => {
     const { locations , getLocations } = useContext(LocationContext)
     const { employees , getEmployees } = useContext(EmployeeContext)
 
+
+    // The DOM is always reflecting what's in useState()
+    // useState(the initial state goes in here)
     const [animal , setAnimal] = useState({})
     const [employee , setEmployee] = useState({})
     const [location , setLocation] = useState({})
-
+    
+    // Without these useState() definitions the useEffects below would return undefined
+    // useEffect called anytime 
     useEffect(() => {
         getEmployees()
         .then(getLocations)
@@ -25,6 +30,7 @@ export const EmployeeDetail = (props) => {
     }, [animals])
 
     useEffect(() => {
+    // If .find returns undefined then set employee = to an empty object {} which is the initial state of employee
         const employee = employees.find(e => e.id === parseInt(props.match.params.employeeId)) || {}
         setEmployee(employee)
     }, [employees])
