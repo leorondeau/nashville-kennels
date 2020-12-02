@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 
 /* 
 
-useState() is what the React team calls a hook. 
+useState() 
 It is used to store data about the component. 
 You can translate its usage into English with the following statement.
 
@@ -10,7 +10,7 @@ You can translate its usage into English with the following statement.
 
 /*
 
-useEffect() is what the React team calls a hook. 
+useEffect()
 It is used to respond to changes in the component's state. 
 You can translate its usage into English with the following statement.
 

@@ -4,6 +4,7 @@ export const AnimalContext = React.createContext()
 
 export const AnimalProvider = (props) => {
     const [animals , setAnimals] = useState([])
+    const [ searchTerms , setSearchTerms ] = useState("") 
 
     const getAnimals = () => {
         return fetch("http://localhost:8088/animals")
@@ -11,6 +12,10 @@ export const AnimalProvider = (props) => {
             .then(setAnimals)
     }
 
+    // Use expand when source has foreign key
+    // Use embed when no foreign key.
+    // If uncertain embed will give empty array if no fk
+    // One to many relationship, embed
     const getAnimalById = (id) => {
         return fetch (`http://localhost:8088/animals/${ id }?_expand=location&_expand=customer`)
             .then(res => res.json())
@@ -29,7 +34,7 @@ export const AnimalProvider = (props) => {
 
     return (
         <AnimalContext.Provider value={{
-            animals , addAnimal , getAnimals , getAnimalById
+            animals , addAnimal , getAnimals , getAnimalById , searchTerms , setSearchTerms
         }}>
             {props.children}
         </AnimalContext.Provider>
