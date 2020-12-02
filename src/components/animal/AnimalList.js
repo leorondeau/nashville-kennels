@@ -1,17 +1,29 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect , useState } from "react"
 import { AnimalContext } from "./AnimalProvider"
 import { Animal } from "./Animal"
 import "./Animal.css"
 
 
 export const AnimalList = (props) => {
-    const { animals, getAnimals } = useContext(AnimalContext)
+    const { animals, searchTerms, getAnimals } = useContext(AnimalContext)
   
+    const[ filteredAnimals , setFiltered ] = useState([])
+    
 
 
     useEffect(() => {
         getAnimals()
     }, [])
+
+    useEffect(() => {
+        if (searchTerms !== "") {
+            const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms))
+            setFiltered(subset)
+        } else {
+            // If the search field is blank, display all animals
+            setFiltered(animals)
+        }
+    }, [searchTerms, animals])
 
     return (
         <>
@@ -22,7 +34,7 @@ export const AnimalList = (props) => {
             </button>
             <div className="animals">
                 {
-                    animals.map(animal => {
+                    filteredAnimals.map(animal => {
                         return <Animal key={animal.id} animal={animal} />
                     })
                 }

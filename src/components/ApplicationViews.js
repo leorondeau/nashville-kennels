@@ -13,6 +13,7 @@ import { EmployeeDetail } from "./employee/EmployeeDetail"
 import { EmployeeList } from "./employee/EmployeeList"
 import { LocationDetail } from "./location/LocationDetail"
 import { AnimalDetail } from "./animal/AnimalDetail"
+import { AnimalSearch } from "./animal/AnimalSearch"
 
 
 
@@ -41,7 +42,12 @@ export const ApplicationViews = (props) => {
                 <LocationProvider>
                     <CustomerProvider>
                         <Route exact path="/animals" render={
-                            props => <AnimalList {...props} />
+                            props => {
+                                return <>
+                                    <AnimalSearch />
+                                    <AnimalList {...props} />
+                                </>
+                            }
                         } />
 
                         <Route exact path="/animals/create" render={
@@ -51,6 +57,8 @@ export const ApplicationViews = (props) => {
                         <Route path="/animals/:animalId(\d+)" render={
                             props => <AnimalDetail {...props} />
                         } />
+
+
 
                     </CustomerProvider>
                 </LocationProvider>
@@ -66,7 +74,7 @@ export const ApplicationViews = (props) => {
                         <Route path="/employees/create" render={
                             props => <EmployeeForm {...props} />
                         } />
-                        
+
                         <Route path="/employees/:employeeId(\d+)" render={
                             // Props (location , match , history) are being attachec to EmployeeDetail
                             props => <EmployeeDetail {...props} />
