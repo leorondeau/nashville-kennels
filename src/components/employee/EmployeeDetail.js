@@ -7,7 +7,7 @@ import "./Employee.css"
 export const EmployeeDetail = (props) => {
     const { animals , getAnimals } = useContext(AnimalContext)
     const { locations , getLocations } = useContext(LocationContext)
-    const { employees , getEmployees } = useContext(EmployeeContext)
+    const { employees , getEmployees , releaseEmployee } = useContext(EmployeeContext)
 
 
     // The DOM is always reflecting what's in useState()
@@ -51,6 +51,14 @@ export const EmployeeDetail = (props) => {
                     : `Currently taking care of ${animal.name}`
                 }
             </div>
+            <button onClick={
+                () => {
+                    releaseEmployee(props.match.params.employeeId)
+                    .then(() => {
+                        props.history.push("/employees")
+                    })
+                }
+            }>Release Employee</button>
         </section>
     )
 }
