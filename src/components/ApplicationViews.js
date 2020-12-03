@@ -43,6 +43,7 @@ export const ApplicationViews = (props) => {
                     <CustomerProvider>
                         <Route exact path="/animals" render={
                             props => {
+                                // debugger
                                 return <>
                                     <AnimalSearch />
                                     <AnimalList {...props} />

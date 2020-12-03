@@ -3,7 +3,7 @@ import { AnimalContext } from "./AnimalProvider"
 import "./Animal.css"
 
 export const AnimalDetail = (props) => {
-    const { releaseAnimal , getAnimalById } = useContext(AnimalContext)
+    const { releaseAnimal , getAnimalById  } = useContext(AnimalContext)
     // If useState did not have initial render of location: {}, customer: {}} it show undefined
     const [animal , setAnimal] = useState({ location: {}, customer: {}})
     // const returnValueOfUseStateFucntion = useState({ location: {}, customer: {}})
@@ -25,7 +25,7 @@ export const AnimalDetail = (props) => {
             <div className="animal__owner">Customer: {animal.customer.name}</div>
             <button onClick = {
                 () => {
-                    releaseAnimal(animal)
+                    releaseAnimal(animal.id)
                     .then(() => {
                         props.history.push("/animals")
                     })

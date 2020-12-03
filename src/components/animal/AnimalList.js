@@ -9,13 +9,16 @@ export const AnimalList = (props) => {
   
     const[ filteredAnimals , setFiltered ] = useState([])
     
-
-
+    
+    
+    // debugger
     useEffect(() => {
+        // debugger
         getAnimals()
     }, [])
-
+    
     useEffect(() => {
+        // Use startsWith to filter by first letter
         if (searchTerms !== "") {
             const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms))
             setFiltered(subset)
@@ -24,7 +27,7 @@ export const AnimalList = (props) => {
             setFiltered(animals)
         }
     }, [searchTerms, animals])
-
+    // debugger
     return (
         <>
 
