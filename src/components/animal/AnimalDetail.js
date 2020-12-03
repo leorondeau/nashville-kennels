@@ -1,9 +1,10 @@
 import React , { useContext , useEffect , useState } from "react"
 import { AnimalContext } from "./AnimalProvider"
+
 import "./Animal.css"
 
 export const AnimalDetail = (props) => {
-    const { releaseAnimal , getAnimalById  } = useContext(AnimalContext)
+    const { releaseAnimal , getAnimalById , updateAnimal  } = useContext(AnimalContext)
     // If useState did not have initial render of location: {}, customer: {}} it show undefined
     const [animal , setAnimal] = useState({ location: {}, customer: {}})
     // const returnValueOfUseStateFucntion = useState({ location: {}, customer: {}})
@@ -25,7 +26,9 @@ export const AnimalDetail = (props) => {
             <div className="animal__owner">Customer: {animal.customer.name}</div>
             <button onClick = {
                 () => {
+
                     releaseAnimal(animal.id)
+                    // or releaseAnimal(props.match.params.animalId)
                     .then(() => {
                         props.history.push("/animals")
                     })
@@ -33,9 +36,14 @@ export const AnimalDetail = (props) => {
             }>
             Release Animal
             </button>
-            <button onClick={() => {
+            <button onClick={
+                () => {
+                updateAnimal(props.match.params.animalId)
+                .then(() => {
                 props.history.push(`/animals/edit/${animal.id}`)
-            }}>Edit</button>
+            })
+        }
+        }>Edit</button>
         </section>
     )
 }

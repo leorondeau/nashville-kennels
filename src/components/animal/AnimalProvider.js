@@ -38,9 +38,22 @@ export const AnimalProvider = (props) => {
         })
         .then(getAnimals)
     }
+
+    // Whenever altering an existing entity the fetch url must have the id
+    const updateAnimal = animal => {
+        return fetch (`http://localhost:8088/animals/${animal.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(animal)
+        })
+        .then(getAnimals)
+    }
+
     return (
         <AnimalContext.Provider value={{
-            animals , addAnimal , getAnimals , getAnimalById , searchTerms , setSearchTerms , releaseAnimal
+            animals , addAnimal , getAnimals , getAnimalById , searchTerms , setSearchTerms , releaseAnimal, updateAnimal
         }}>
             {props.children}
         </AnimalContext.Provider>
